@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>APD Detection System - CONFIGURATION</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {  background-color: #f8f8f8; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ef2929; } /* Alert */
+    code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #204a87; } /* Attribute */
+    code span.bn { color: #0000cf; } /* BaseN */
+    code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4e9a06; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #8f5902; font-style: italic; } /* Comment */
+    code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+    code span.dt { color: #204a87; } /* DataType */
+    code span.dv { color: #0000cf; } /* DecVal */
+    code span.er { color: #a40000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #0000cf; } /* Float */
+    code span.fu { color: #204a87; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+    code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+    code span.ot { color: #8f5902; } /* Other */
+    code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+    code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+    code span.ss { color: #4e9a06; } /* SpecialString */
+    code span.st { color: #4e9a06; } /* String */
+    code span.va { color: #000000; } /* Variable */
+    code span.vs { color: #4e9a06; } /* VerbatimString */
+    code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">APD Detection System - CONFIGURATION</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#configuration-reference"
+id="toc-configuration-reference">⚙️ Configuration Reference</a>
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">📋 Table of
+Contents</a></li>
+<li><a href="#environment-variables" id="toc-environment-variables">🔑
+Environment Variables</a>
+<ul>
+<li><a href="#quick-reference-table"
+id="toc-quick-reference-table">Quick Reference Table</a></li>
+</ul></li>
+<li><a href="#database-configuration" id="toc-database-configuration">💾
+Database Configuration</a>
+<ul>
+<li><a href="#database_path"
+id="toc-database_path">DATABASE_PATH</a></li>
+</ul></li>
+<li><a href="#detection-settings" id="toc-detection-settings">🎯
+Detection Settings</a>
+<ul>
+<li><a href="#confidence_threshold"
+id="toc-confidence_threshold">CONFIDENCE_THRESHOLD</a></li>
+<li><a href="#fps" id="toc-fps">FPS</a></li>
+<li><a href="#video_frame_sample_rate"
+id="toc-video_frame_sample_rate">VIDEO_FRAME_SAMPLE_RATE</a></li>
+<li><a href="#video_save_only_on_change"
+id="toc-video_save_only_on_change">VIDEO_SAVE_ONLY_ON_CHANGE</a></li>
+<li><a href="#video_change_threshold"
+id="toc-video_change_threshold">VIDEO_CHANGE_THRESHOLD</a></li>
+</ul></li>
+<li><a href="#notification-settings" id="toc-notification-settings">🔔
+Notification Settings</a>
+<ul>
+<li><a href="#enable_telegram"
+id="toc-enable_telegram">ENABLE_TELEGRAM</a></li>
+<li><a href="#telegram_bot_token"
+id="toc-telegram_bot_token">TELEGRAM_BOT_TOKEN</a></li>
+<li><a href="#telegram_chat_id"
+id="toc-telegram_chat_id">TELEGRAM_CHAT_ID</a></li>
+<li><a href="#notification_cooldown_seconds"
+id="toc-notification_cooldown_seconds">NOTIFICATION_COOLDOWN_SECONDS</a></li>
+<li><a href="#min_severity_for_notification"
+id="toc-min_severity_for_notification">MIN_SEVERITY_FOR_NOTIFICATION</a></li>
+</ul></li>
+<li><a href="#violation-settings" id="toc-violation-settings">🚨
+Violation Settings</a>
+<ul>
+<li><a href="#violation_cooldown_seconds"
+id="toc-violation_cooldown_seconds">VIOLATION_COOLDOWN_SECONDS</a></li>
+<li><a href="#violation_track_per_person"
+id="toc-violation_track_per_person">VIOLATION_TRACK_PER_PERSON</a></li>
+</ul></li>
+<li><a href="#ui-settings" id="toc-ui-settings">🎨 UI Settings</a>
+<ul>
+<li><a href="#show_detection_stats"
+id="toc-show_detection_stats">SHOW_DETECTION_STATS</a></li>
+</ul></li>
+<li><a href="#location-camera-settings"
+id="toc-location-camera-settings">🌍 Location &amp; Camera Settings</a>
+<ul>
+<li><a href="#location" id="toc-location">LOCATION</a></li>
+<li><a href="#camera_id" id="toc-camera_id">CAMERA_ID</a></li>
+<li><a href="#timezone" id="toc-timezone">TIMEZONE</a></li>
+</ul></li>
+<li><a href="#logging-settings" id="toc-logging-settings">📝 Logging
+Settings</a>
+<ul>
+<li><a href="#log_level" id="toc-log_level">LOG_LEVEL</a></li>
+<li><a href="#log_file" id="toc-log_file">LOG_FILE</a></li>
+</ul></li>
+<li><a href="#performance-tuning" id="toc-performance-tuning">⚡
+Performance Tuning</a>
+<ul>
+<li><a href="#for-cpu-only-systems" id="toc-for-cpu-only-systems">For
+CPU-Only Systems</a></li>
+<li><a href="#for-gpu-systems" id="toc-for-gpu-systems">For GPU
+Systems</a></li>
+<li><a href="#for-high-traffic-areas"
+id="toc-for-high-traffic-areas">For High-Traffic Areas</a></li>
+<li><a href="#for-low-traffic-areas" id="toc-for-low-traffic-areas">For
+Low-Traffic Areas</a></li>
+</ul></li>
+<li><a href="#production-configuration"
+id="toc-production-configuration">🏭 Production Configuration</a>
+<ul>
+<li><a href="#recommended-production-.env"
+id="toc-recommended-production-.env">Recommended Production
+.env</a></li>
+</ul></li>
+<li><a href="#security-best-practices"
+id="toc-security-best-practices">🔐 Security Best Practices</a>
+<ul>
+<li><a href="#environment-file-protection"
+id="toc-environment-file-protection">1. Environment File
+Protection</a></li>
+<li><a href="#telegram-token-security"
+id="toc-telegram-token-security">2. Telegram Token Security</a></li>
+<li><a href="#database-security" id="toc-database-security">3. Database
+Security</a></li>
+</ul></li>
+<li><a href="#configuration-validation"
+id="toc-configuration-validation">📊 Configuration Validation</a></li>
+<li><a href="#configuration-troubleshooting"
+id="toc-configuration-troubleshooting">🆘 Configuration
+Troubleshooting</a>
+<ul>
+<li><a href="#problem-config-not-loading"
+id="toc-problem-config-not-loading">Problem: Config not loading</a></li>
+<li><a href="#problem-telegram-not-working"
+id="toc-problem-telegram-not-working">Problem: Telegram not
+working</a></li>
+</ul></li>
+<li><a href="#additional-resources" id="toc-additional-resources">📚
+Additional Resources</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="configuration-reference">⚙️ Configuration Reference</h1>
+<p>Dokumentasi lengkap semua konfigurasi yang tersedia di APD Detection
+System.</p>
+<hr />
+<h2 id="table-of-contents">📋 Table of Contents</h2>
+<ul>
+<li><a href="#-environment-variables">Environment Variables</a></li>
+<li><a href="#-database-configuration">Database Configuration</a></li>
+<li><a href="#-detection-settings">Detection Settings</a></li>
+<li><a href="#-violation-settings">Violation Settings</a></li>
+<li><a href="#-notification-settings">Notification Settings</a></li>
+<li><a href="#-ui-settings">UI Settings</a></li>
+<li><a href="#-performance-tuning">Performance Tuning</a></li>
+<li><a href="#-production-configuration">Production
+Configuration</a></li>
+</ul>
+<hr />
+<h2 id="environment-variables">🔑 Environment Variables</h2>
+<p>Semua konfigurasi disimpan di file <code>.env</code> di directory
+<code>python-script/</code>.</p>
+<h3 id="quick-reference-table">Quick Reference Table</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 28%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+<th>Valid Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_PATH</code></td>
+<td><code>./db/apd_detection.db</code></td>
+<td>Path ke database SQLite</td>
+<td>Any valid path</td>
+</tr>
+<tr>
+<td><code>LOCATION</code></td>
+<td><code>Terminal Pelabuhan A</code></td>
+<td>Nama lokasi monitoring</td>
+<td>Any string</td>
+</tr>
+<tr>
+<td><code>CAMERA_ID</code></td>
+<td><code>CAM-001</code></td>
+<td>ID kamera</td>
+<td>Any string</td>
+</tr>
+<tr>
+<td><code>TIMEZONE</code></td>
+<td><code>Asia/Surabaya</code></td>
+<td>Timezone untuk timestamp</td>
+<td>IANA timezone</td>
+</tr>
+<tr>
+<td><code>CONFIDENCE_THRESHOLD</code></td>
+<td><code>0.5</code></td>
+<td>Threshold deteksi</td>
+<td>0.1 - 1.0</td>
+</tr>
+<tr>
+<td><code>FPS</code></td>
+<td><code>10</code></td>
+<td>Frame per second</td>
+<td>1 - 60</td>
+</tr>
+<tr>
+<td><code>ENABLE_TELEGRAM</code></td>
+<td><code>false</code></td>
+<td>Enable Telegram notif</td>
+<td><code>true</code>/<code>false</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_EMAIL</code></td>
+<td><code>false</code></td>
+<td>Enable Email notif</td>
+<td><code>true</code>/<code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="database-configuration">💾 Database Configuration</h2>
+<h3 id="database_path">DATABASE_PATH</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATABASE_PATH</span><span class="op">=</span>./db/apd_detection.db</span></code></pre></div>
+<p><strong>Description</strong>: Path ke file database SQLite.</p>
+<p><strong>Options</strong>: - Relative path:
+<code>./db/apd_detection.db</code> - Absolute path:
+<code>/var/data/apd_detection.db</code> - In-memory (testing):
+<code>:memory:</code></p>
+<p><strong>Recommendations</strong>: - Development:
+<code>./db/apd_detection.db</code> - Production:
+<code>/var/lib/apd/apd_detection.db</code> (dengan proper
+permissions)</p>
+<p><strong>Notes</strong>: - Directory harus sudah ada atau writable -
+Database akan dibuat otomatis jika belum ada - Backup database secara
+berkala untuk production</p>
+<hr />
+<h2 id="detection-settings">🎯 Detection Settings</h2>
+<h3 id="confidence_threshold">CONFIDENCE_THRESHOLD</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.5</span></code></pre></div>
+<p><strong>Description</strong>: Minimum confidence score untuk deteksi
+valid.</p>
+<p><strong>Range</strong>: <code>0.1</code> - <code>1.0</code></p>
+<p><strong>Recommendations</strong>: - <strong>High Precision</strong>
+(sedikit false positive): <code>0.6 - 0.7</code> -
+<strong>Balanced</strong>: <code>0.5</code> (recommended) - <strong>High
+Recall</strong> (detect lebih banyak): <code>0.3 - 0.4</code></p>
+<p><strong>Impact</strong>: - Nilai tinggi → Lebih sedikit deteksi,
+lebih akurat - Nilai rendah → Lebih banyak deteksi, lebih banyak false
+positive</p>
+<h3 id="fps">FPS</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>10</span></code></pre></div>
+<p><strong>Description</strong>: Target frame per second untuk
+processing.</p>
+<p><strong>Range</strong>: <code>1</code> - <code>60</code></p>
+<p><strong>Recommendations</strong>: - <strong>High-end PC/GPU</strong>:
+<code>30</code> - <strong>Mid-range PC</strong>: <code>15 - 20</code> -
+<strong>Low-end PC/CPU only</strong>: <code>5 - 10</code> -
+<strong>Real-time critical</strong>: <code>30</code> - <strong>Review
+purposes</strong>: <code>10</code></p>
+<p><strong>Impact</strong>: - FPS tinggi → Lebih smooth tapi lebih berat
+CPU/GPU - FPS rendah → Lebih hemat resource tapi kurang smooth</p>
+<h3 id="video_frame_sample_rate">VIDEO_FRAME_SAMPLE_RATE</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_FRAME_SAMPLE_RATE</span><span class="op">=</span>30</span></code></pre></div>
+<p><strong>Description</strong>: Save detection setiap N frames (untuk
+mengurangi redundansi di database).</p>
+<p><strong>Range</strong>: <code>1</code> - <code>120</code></p>
+<p><strong>Recommendations</strong>: - <strong>30 fps video</strong>:
+<code>30</code> (save setiap 1 detik) - <strong>60 fps video</strong>:
+<code>60</code> (save setiap 1 detik) - <strong>Low fps video</strong>:
+<code>10</code> (save lebih sering)</p>
+<p><strong>Example</strong>: - Video 30 fps, sample rate 30 → Save 1
+detection per detik - Video 60 fps, sample rate 60 → Save 1 detection
+per detik</p>
+<h3 id="video_save_only_on_change">VIDEO_SAVE_ONLY_ON_CHANGE</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_SAVE_ONLY_ON_CHANGE</span><span class="op">=</span>true</span></code></pre></div>
+<p><strong>Description</strong>: Hanya save ke database jika ada
+perubahan signifikan.</p>
+<p><strong>Values</strong>: <code>true</code> / <code>false</code></p>
+<p><strong>Recommendations</strong>: - <strong>Production</strong>:
+<code>true</code> (menghemat storage) -
+<strong>Development/Debug</strong>: <code>false</code> (save semua)</p>
+<h3 id="video_change_threshold">VIDEO_CHANGE_THRESHOLD</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_CHANGE_THRESHOLD</span><span class="op">=</span>20.0</span></code></pre></div>
+<p><strong>Description</strong>: Minimum perubahan (%) untuk dianggap
+“significant change”.</p>
+<p><strong>Range</strong>: <code>5.0</code> - <code>50.0</code></p>
+<p><strong>Recommendations</strong>: - <strong>Sensitive</strong> (save
+banyak perubahan): <code>10.0</code> - <strong>Balanced</strong>:
+<code>20.0</code> (recommended) - <strong>Conservative</strong> (hanya
+perubahan besar): <code>30.0</code></p>
+<p><strong>Example</strong>: - Threshold 20% → Save jika deteksi berubah
+≥20% - Scene dengan 5 orang → threshold 1 orang (20% dari 5)</p>
+<hr />
+<h2 id="notification-settings">🔔 Notification Settings</h2>
+<h3 id="enable_telegram">ENABLE_TELEGRAM</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">ENABLE_TELEGRAM</span><span class="op">=</span>false</span></code></pre></div>
+<p><strong>Description</strong>: Enable/disable Telegram
+notifications.</p>
+<p><strong>Values</strong>: <code>true</code> / <code>false</code></p>
+<p><strong>Requirements untuk <code>true</code></strong>: -
+<code>TELEGRAM_BOT_TOKEN</code> harus diisi -
+<code>TELEGRAM_CHAT_ID</code> harus diisi - Internet connection
+tersedia</p>
+<h3 id="telegram_bot_token">TELEGRAM_BOT_TOKEN</h3>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">TELEGRAM_BOT_TOKEN</span><span class="op">=</span><span class="st">&quot;123456789:ABCdefGHI...&quot;</span></span></code></pre></div>
+<p><strong>Description</strong>: Token dari Telegram BotFather.</p>
+<p><strong>How to get</strong>: 1. Buka Telegram, cari
+<code>@BotFather</code> 2. Send <code>/newbot</code> 3. Follow instruksi
+4. Copy token yang diberikan</p>
+<p><strong>Format</strong>:
+<code>&lt;bot_id&gt;:&lt;token_string&gt;</code></p>
+<p><strong>Example</strong>:
+<code>1234567890:AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPqq</code></p>
+<h3 id="telegram_chat_id">TELEGRAM_CHAT_ID</h3>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">TELEGRAM_CHAT_ID</span><span class="op">=</span><span class="st">&quot;123456789&quot;</span></span></code></pre></div>
+<p><strong>Description</strong>: Chat ID tujuan notifikasi.</p>
+<p><strong>How to get</strong>:</p>
+<p><strong>Personal Chat</strong>: 1. Cari <code>@userinfobot</code> di
+Telegram 2. Send any message 3. Copy your ID</p>
+<p><strong>Group Chat</strong>: 1. Add <code>@getidsbot</code> ke group
+2. Copy group ID (starts with <code>-</code>)</p>
+<p><strong>Format</strong>: - Personal: <code>123456789</code> - Group:
+<code>-123456789</code></p>
+<h3
+id="notification_cooldown_seconds">NOTIFICATION_COOLDOWN_SECONDS</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">NOTIFICATION_COOLDOWN_SECONDS</span><span class="op">=</span>300</span></code></pre></div>
+<p><strong>Description</strong>: Cooldown period untuk mencegah spam
+notifikasi (dalam detik).</p>
+<p><strong>Range</strong>: <code>60</code> - <code>3600</code> (1 menit
+- 1 jam)</p>
+<p><strong>Recommendations</strong>: - <strong>High traffic
+area</strong>: <code>300</code> (5 menit) - <strong>Medium
+traffic</strong>: <code>180</code> (3 menit) - <strong>Low
+traffic</strong>: <code>120</code> (2 menit) - <strong>Urgent
+scenarios</strong>: <code>60</code> (1 menit)</p>
+<p><strong>Behavior</strong>: - Person yang sama dengan violation yang
+sama akan di-cooldown - Setelah cooldown expired, notifikasi akan
+dikirim lagi</p>
+<h3
+id="min_severity_for_notification">MIN_SEVERITY_FOR_NOTIFICATION</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">MIN_SEVERITY_FOR_NOTIFICATION</span><span class="op">=</span>MEDIUM</span></code></pre></div>
+<p><strong>Description</strong>: Minimum severity level untuk trigger
+notifikasi.</p>
+<p><strong>Values</strong>: - <code>LOW</code> - Notify semua violations
+- <code>MEDIUM</code> - Notify MEDIUM, HIGH, CRITICAL -
+<code>HIGH</code> - Notify HIGH, CRITICAL only - <code>CRITICAL</code> -
+Notify CRITICAL only</p>
+<p><strong>Recommendations</strong>: - <strong>Production</strong>:
+<code>MEDIUM</code> atau <code>HIGH</code> - <strong>Testing</strong>:
+<code>LOW</code> - <strong>Critical areas</strong>:
+<code>HIGH</code></p>
+<hr />
+<h2 id="violation-settings">🚨 Violation Settings</h2>
+<h3 id="violation_cooldown_seconds">VIOLATION_COOLDOWN_SECONDS</h3>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIOLATION_COOLDOWN_SECONDS</span><span class="op">=</span>3</span></code></pre></div>
+<p><strong>Description</strong>: Cooldown untuk violation detection
+(mencegah duplicate violations dari frame yang berurutan).</p>
+<p><strong>Range</strong>: <code>1</code> - <code>10</code> detik</p>
+<p><strong>Recommendations</strong>: - <strong>Fast-moving
+workers</strong>: <code>2 - 3</code> - <strong>Slow-moving
+workers</strong>: <code>5</code> - <strong>Static monitoring</strong>:
+<code>10</code></p>
+<p><strong>Impact</strong>: - Cooldown rendah → Lebih banyak violation
+records - Cooldown tinggi → Lebih sedikit duplicate violations</p>
+<h3 id="violation_track_per_person">VIOLATION_TRACK_PER_PERSON</h3>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIOLATION_TRACK_PER_PERSON</span><span class="op">=</span>true</span></code></pre></div>
+<p><strong>Description</strong>: Track violation per individual person
+(menggunakan ByteTrack ID).</p>
+<p><strong>Values</strong>: <code>true</code> / <code>false</code></p>
+<p><strong>Benefits if <code>true</code></strong>: - Cooldown per-person
+(lebih akurat) - Bisa track violation history per individu - Better
+notification management</p>
+<p><strong>Drawbacks if <code>false</code></strong>: - Global cooldown
+untuk semua orang - Tidak bisa distinguish individual violations</p>
+<p><strong>Recommendations</strong>: Always <code>true</code> untuk
+production</p>
+<hr />
+<h2 id="ui-settings">🎨 UI Settings</h2>
+<h3 id="show_detection_stats">SHOW_DETECTION_STATS</h3>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="va">SHOW_DETECTION_STATS</span><span class="op">=</span>true</span></code></pre></div>
+<p><strong>Description</strong>: Tampilkan statistik deteksi di UI.</p>
+<p><strong>Values</strong>: <code>true</code> / <code>false</code></p>
+<p><strong>Recommendations</strong>: - <strong>Production
+monitoring</strong>: <code>true</code> - <strong>Simple detection
+only</strong>: <code>false</code></p>
+<hr />
+<h2 id="location-camera-settings">🌍 Location &amp; Camera Settings</h2>
+<h3 id="location">LOCATION</h3>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="va">LOCATION</span><span class="op">=</span>Terminal <span class="ex">Pelabuhan</span> A</span></code></pre></div>
+<p><strong>Description</strong>: Nama lokasi untuk record keeping.</p>
+<p><strong>Format</strong>: Any string (max 255 characters)</p>
+<p><strong>Examples</strong>: - <code>Terminal Pelabuhan A</code> -
+<code>Workshop Area 2</code> - <code>Main Gate - North Entrance</code> -
+<code>Construction Site - Building 3</code></p>
+<h3 id="camera_id">CAMERA_ID</h3>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="va">CAMERA_ID</span><span class="op">=</span>CAM-001</span></code></pre></div>
+<p><strong>Description</strong>: Identifier kamera untuk multi-camera
+setup.</p>
+<p><strong>Format</strong>: Any string (recommended: alphanumeric with
+dash)</p>
+<p><strong>Examples</strong>: - <code>CAM-001</code>,
+<code>CAM-002</code>, … - <code>GATE-NORTH-01</code> -
+<code>WORKSHOP-A-MAIN</code></p>
+<h3 id="timezone">TIMEZONE</h3>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span>Asia/Surabaya</span></code></pre></div>
+<p><strong>Description</strong>: Timezone untuk timestamp.</p>
+<p><strong>Format</strong>: IANA timezone database format</p>
+<p><strong>Common Values</strong>: - <code>Asia/Jakarta</code> (WIB -
+GMT+7) - <code>Asia/Makassar</code> (WITA - GMT+8) -
+<code>Asia/Jayapura</code> (WIT - GMT+9) - <code>UTC</code> (Universal
+Time)</p>
+<p><strong>Find your timezone</strong>:
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</p>
+<hr />
+<h2 id="logging-settings">📝 Logging Settings</h2>
+<h3 id="log_level">LOG_LEVEL</h3>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="va">LOG_LEVEL</span><span class="op">=</span>INFO</span></code></pre></div>
+<p><strong>Description</strong>: Level logging untuk debugging.</p>
+<p><strong>Values</strong>: <code>DEBUG</code> | <code>INFO</code> |
+<code>WARNING</code> | <code>ERROR</code> | <code>CRITICAL</code></p>
+<p><strong>Recommendations</strong>: - <strong>Development</strong>:
+<code>DEBUG</code> (verbose logging) - <strong>Production</strong>:
+<code>INFO</code> (normal logging) - <strong>Production
+(minimal)</strong>: <code>WARNING</code> (errors only)</p>
+<p><strong>Log Levels</strong>: - <code>DEBUG</code>: Semua informasi
+detail - <code>INFO</code>: Informasi umum operasi -
+<code>WARNING</code>: Warning messages - <code>ERROR</code>: Error
+messages - <code>CRITICAL</code>: Critical errors only</p>
+<h3 id="log_file">LOG_FILE</h3>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="va">LOG_FILE</span><span class="op">=</span>./logs/apd_detection.log</span></code></pre></div>
+<p><strong>Description</strong>: Path ke file log.</p>
+<p><strong>Recommendations</strong>: - Development:
+<code>./logs/apd_detection.log</code> - Production:
+<code>/var/log/apd/detection.log</code></p>
+<p><strong>Log Rotation</strong> (Coming soon): - Automatic rotation
+setelah 10MB - Keep 7 hari history</p>
+<hr />
+<h2 id="performance-tuning">⚡ Performance Tuning</h2>
+<h3 id="for-cpu-only-systems">For CPU-Only Systems</h3>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.6</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>5</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_FRAME_SAMPLE_RATE</span><span class="op">=</span>30</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_SAVE_ONLY_ON_CHANGE</span><span class="op">=</span>true</span></code></pre></div>
+<h3 id="for-gpu-systems">For GPU Systems</h3>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.5</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>30</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_FRAME_SAMPLE_RATE</span><span class="op">=</span>60</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_SAVE_ONLY_ON_CHANGE</span><span class="op">=</span>true</span></code></pre></div>
+<h3 id="for-high-traffic-areas">For High-Traffic Areas</h3>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIOLATION_COOLDOWN_SECONDS</span><span class="op">=</span>2</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="va">NOTIFICATION_COOLDOWN_SECONDS</span><span class="op">=</span>180</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="va">MIN_SEVERITY_FOR_NOTIFICATION</span><span class="op">=</span>HIGH</span></code></pre></div>
+<h3 id="for-low-traffic-areas">For Low-Traffic Areas</h3>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="va">VIOLATION_COOLDOWN_SECONDS</span><span class="op">=</span>5</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="va">NOTIFICATION_COOLDOWN_SECONDS</span><span class="op">=</span>300</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="va">MIN_SEVERITY_FOR_NOTIFICATION</span><span class="op">=</span>MEDIUM</span></code></pre></div>
+<hr />
+<h2 id="production-configuration">🏭 Production Configuration</h2>
+<h3 id="recommended-production-.env">Recommended Production .env</h3>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Database</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="va">DATABASE_PATH</span><span class="op">=</span>/var/lib/apd/apd_detection.db</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Location</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="va">LOCATION</span><span class="op">=</span>Terminal <span class="ex">Pelabuhan</span> Tanjung Perak</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="va">CAMERA_ID</span><span class="op">=</span>CAM-MAIN-01</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="va">TIMEZONE</span><span class="op">=</span>Asia/Jakarta</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Detection (GPU)</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.6</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>30</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Video Processing</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_FRAME_SAMPLE_RATE</span><span class="op">=</span>60</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_SAVE_ONLY_ON_CHANGE</span><span class="op">=</span>true</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_CHANGE_THRESHOLD</span><span class="op">=</span>20.0</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Violations</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="va">VIOLATION_COOLDOWN_SECONDS</span><span class="op">=</span>3</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="va">VIOLATION_TRACK_PER_PERSON</span><span class="op">=</span>true</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Notifications</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="va">ENABLE_TELEGRAM</span><span class="op">=</span>true</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="va">TELEGRAM_BOT_TOKEN</span><span class="op">=</span>your_actual_token</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="va">TELEGRAM_CHAT_ID</span><span class="op">=</span>your_actual_chat_id</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="va">NOTIFICATION_COOLDOWN_SECONDS</span><span class="op">=</span>300</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="va">MIN_SEVERITY_FOR_NOTIFICATION</span><span class="op">=</span>HIGH</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a><span class="co"># UI</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a><span class="va">SHOW_DETECTION_STATS</span><span class="op">=</span>true</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Logging</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a><span class="va">LOG_LEVEL</span><span class="op">=</span>INFO</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a><span class="va">LOG_FILE</span><span class="op">=</span>/var/log/apd/detection.log</span></code></pre></div>
+<hr />
+<h2 id="security-best-practices">🔐 Security Best Practices</h2>
+<h3 id="environment-file-protection">1. Environment File Protection</h3>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set proper permissions</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 600 python-script/.env</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Never commit .env to git</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;.env&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<h3 id="telegram-token-security">2. Telegram Token Security</h3>
+<ul>
+<li>❌ <strong>Never</strong> commit token ke Git</li>
+<li>❌ <strong>Never</strong> share token publicly</li>
+<li>✅ Use environment variables</li>
+<li>✅ Rotate token periodically</li>
+</ul>
+<h3 id="database-security">3. Database Security</h3>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set proper permissions</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 644 db/apd_detection.db</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 db/</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Regular backups</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> db/apd_detection.db db/backups/apd_detection_<span class="va">$(</span><span class="fu">date</span> +%Y%m%d<span class="va">)</span>.db</span></code></pre></div>
+<hr />
+<h2 id="configuration-validation">📊 Configuration Validation</h2>
+<p>Test konfigurasi Anda:</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> python-script</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate config</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> config.py</span></code></pre></div>
+<p>Expected output:</p>
+<pre><code>============================================================
+APD Detection System - Configuration
+============================================================
+Database Path:       ./db/apd_detection.db
+Location:            Terminal Pelabuhan A
+Camera ID:           CAM-001
+Confidence Threshold: 0.5
+Telegram Enabled:    True
+Email Enabled:       False
+Show Stats:          True
+============================================================
+✅ Configuration is valid!</code></pre>
+<hr />
+<h2 id="configuration-troubleshooting">🆘 Configuration
+Troubleshooting</h2>
+<h3 id="problem-config-not-loading">Problem: Config not loading</h3>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check .env location</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> python-script/.env</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check .env format (no syntax errors)</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> python-script/.env</span></code></pre></div>
+<h3 id="problem-telegram-not-working">Problem: Telegram not working</h3>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check values are set</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">&quot;import config; print(f&#39;Token: {config.TELEGRAM_BOT_TOKEN[:10]}..., Chat: {config.TELEGRAM_CHAT_ID}&#39;)&quot;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test connection</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">&quot;from telegram_notifier import TelegramNotifier; import config; t = TelegramNotifier(config.TELEGRAM_BOT_TOKEN, config.TELEGRAM_CHAT_ID); print(t.test_connection())&quot;</span></span></code></pre></div>
+<hr />
+<h2 id="additional-resources">📚 Additional Resources</h2>
+<ul>
+<li><a href="file:///.env.example">.env.example</a> - Template
+konfigurasi</li>
+<li><a href="file:///python-script/config.py">config.py</a> - Config
+loader source code</li>
+<li><a href="INSTALLATION.md">INSTALLATION.md</a> - Installation
+guide</li>
+</ul>
+<hr />
+<p><strong>Need help?</strong> Lihat <a
+href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a> atau buat <a
+href="https://github.com/raflimuhammadd/object-detection/issues">GitHub
+Issue</a>.</p>
+</body>
+</html>

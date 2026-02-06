@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>APD Detection System - README</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {  background-color: #f8f8f8; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ef2929; } /* Alert */
+    code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #204a87; } /* Attribute */
+    code span.bn { color: #0000cf; } /* BaseN */
+    code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4e9a06; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #8f5902; font-style: italic; } /* Comment */
+    code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+    code span.dt { color: #204a87; } /* DataType */
+    code span.dv { color: #0000cf; } /* DecVal */
+    code span.er { color: #a40000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #0000cf; } /* Float */
+    code span.fu { color: #204a87; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+    code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+    code span.ot { color: #8f5902; } /* Other */
+    code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+    code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+    code span.ss { color: #4e9a06; } /* SpecialString */
+    code span.st { color: #4e9a06; } /* String */
+    code span.va { color: #000000; } /* Variable */
+    code span.vs { color: #4e9a06; } /* VerbatimString */
+    code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">APD Detection System - README</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#apd-detection-system" id="toc-apd-detection-system">🦺 APD
+Detection System</a>
+<ul>
+<li><a href="#daftar-isi" id="toc-daftar-isi">📋 Daftar Isi</a></li>
+<li><a href="#fitur-utama" id="toc-fitur-utama">✨ Fitur Utama</a>
+<ul>
+<li><a href="#detection-features" id="toc-detection-features">🎯
+Detection Features</a></li>
+<li><a href="#dashboard-monitoring" id="toc-dashboard-monitoring">📊
+Dashboard &amp; Monitoring</a></li>
+<li><a href="#notification-system" id="toc-notification-system">🔔
+Notification System</a></li>
+<li><a href="#data-management" id="toc-data-management">💾 Data
+Management</a></li>
+</ul></li>
+<li><a href="#tech-stack" id="toc-tech-stack">🛠 Tech Stack</a></li>
+<li><a href="#deteksi-apd" id="toc-deteksi-apd">🦺 Deteksi APD</a>
+<ul>
+<li><a href="#violation-severity-levels"
+id="toc-violation-severity-levels">Violation Severity Levels</a></li>
+</ul></li>
+<li><a href="#quick-start" id="toc-quick-start">🚀 Quick Start</a>
+<ul>
+<li><a href="#prerequisites"
+id="toc-prerequisites">Prerequisites</a></li>
+<li><a href="#installation" id="toc-installation">Installation</a></li>
+</ul></li>
+<li><a href="#struktur-project" id="toc-struktur-project">📁 Struktur
+Project</a></li>
+<li><a href="#screenshot" id="toc-screenshot">📸 Screenshot</a></li>
+<li><a href="#dokumentasi" id="toc-dokumentasi">📚 Dokumentasi</a>
+<ul>
+<li><a href="#dokumentasi-lengkap"
+id="toc-dokumentasi-lengkap">Dokumentasi Lengkap</a></li>
+<li><a href="#development-docs" id="toc-development-docs">Development
+Docs</a></li>
+</ul></li>
+<li><a href="#configuration-highlights"
+id="toc-configuration-highlights">🔧 Configuration Highlights</a></li>
+<li><a href="#use-cases" id="toc-use-cases">🎯 Use Cases</a></li>
+<li><a href="#contributing" id="toc-contributing">🤝
+Contributing</a></li>
+<li><a href="#license" id="toc-license">📝 License</a></li>
+<li><a href="#author" id="toc-author">👨‍💻 Author</a></li>
+<li><a href="#acknowledgments" id="toc-acknowledgments">🙏
+Acknowledgments</a></li>
+<li><a href="#support" id="toc-support">📞 Support</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="apd-detection-system">🦺 APD Detection System</h1>
+<blockquote>
+<p><strong>Sistem Deteksi APD (Alat Pelindung Diri) Real-Time berbasis
+Computer Vision</strong></p>
+</blockquote>
+<p>Sistem monitoring keselamatan kerja yang menggunakan YOLOv11 untuk
+mendeteksi penggunaan Alat Pelindung Diri (APD) secara real-time di area
+pelabuhan. Sistem ini dapat memproses video, gambar, dan webcam stream
+untuk mengidentifikasi pelanggaran keselamatan dan mengirimkan
+notifikasi otomatis.</p>
+<p><img src="https://img.shields.io/badge/Python-3.8+-blue.svg"
+alt="Python" /> <img
+src="https://img.shields.io/badge/YOLOv11-Latest-green.svg"
+alt="YOLOv11" /> <img
+src="https://img.shields.io/badge/Streamlit-1.30+-red.svg"
+alt="Streamlit" /> <img
+src="https://img.shields.io/badge/License-MIT-yellow.svg"
+alt="License" /></p>
+<hr />
+<h2 id="daftar-isi">📋 Daftar Isi</h2>
+<ul>
+<li><a href="#-fitur-utama">Fitur Utama</a></li>
+<li><a href="#-tech-stack">Tech Stack</a></li>
+<li><a href="#-deteksi-apd">Deteksi APD</a></li>
+<li><a href="#-quick-start">Quick Start</a></li>
+<li><a href="#-struktur-project">Struktur Project</a></li>
+<li><a href="#-screenshot">Screenshot</a></li>
+<li><a href="#-dokumentasi">Dokumentasi</a></li>
+<li><a href="#-contributing">Contributing</a></li>
+<li><a href="#-license">License</a></li>
+</ul>
+<hr />
+<h2 id="fitur-utama">✨ Fitur Utama</h2>
+<h3 id="detection-features">🎯 Detection Features</h3>
+<ul>
+<li><strong>Real-time Detection</strong>: Deteksi APD secara real-time
+dari video stream</li>
+<li><strong>Multi-Source Support</strong>: Mendukung webcam, video file,
+dan gambar</li>
+<li><strong>Multi-Object Tracking</strong>: Menggunakan ByteTrack untuk
+tracking individu</li>
+<li><strong>Smart Violation Detection</strong>: Deteksi pelanggaran
+dengan severity levels (LOW, MEDIUM, HIGH, CRITICAL)</li>
+</ul>
+<h3 id="dashboard-monitoring">📊 Dashboard &amp; Monitoring</h3>
+<ul>
+<li><strong>Interactive Dashboard</strong>: Dashboard berbasis Streamlit
+dengan tema light/dark</li>
+<li><strong>Real-time Statistics</strong>: Statistik deteksi dan
+compliance rate</li>
+<li><strong>Violation History</strong>: Riwayat pelanggaran dengan
+filter dan export</li>
+<li><strong>Visual Reports</strong>: Grafik dan visualisasi data
+deteksi</li>
+</ul>
+<h3 id="notification-system">🔔 Notification System</h3>
+<ul>
+<li><strong>Telegram Integration</strong>: Notifikasi real-time ke
+Telegram dengan inline buttons</li>
+<li><strong>Smart Cooldown</strong>: Per-person cooldown untuk mencegah
+spam notifikasi</li>
+<li><strong>Severity Filtering</strong>: Filter notifikasi berdasarkan
+severity level</li>
+<li><strong>Interactive Buttons</strong>: Quick actions (View Details,
+Resolved, False Positive)</li>
+</ul>
+<h3 id="data-management">💾 Data Management</h3>
+<ul>
+<li><strong>SQLite Database</strong>: Penyimpanan data deteksi,
+violation, dan notifikasi</li>
+<li><strong>Session Management</strong>: Tracking session dengan
+location dan camera info</li>
+<li><strong>Export Capability</strong>: Export data dalam format
+CSV/Excel</li>
+</ul>
+<hr />
+<h2 id="tech-stack">🛠 Tech Stack</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Computer Vision</strong></td>
+<td>YOLOv11 (Ultralytics)</td>
+</tr>
+<tr>
+<td><strong>Object Tracking</strong></td>
+<td>ByteTrack</td>
+</tr>
+<tr>
+<td><strong>Web Framework</strong></td>
+<td>Streamlit</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>SQLite3</td>
+</tr>
+<tr>
+<td><strong>Notification</strong></td>
+<td>Telegram Bot API</td>
+</tr>
+<tr>
+<td><strong>Image Processing</strong></td>
+<td>OpenCV, PIL</td>
+</tr>
+<tr>
+<td><strong>Deep Learning</strong></td>
+<td>PyTorch</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Python 3.8+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deteksi-apd">🦺 Deteksi APD</h2>
+<p>Sistem dapat mendeteksi 7 kategori objek:</p>
+<table>
+<thead>
+<tr>
+<th>Kategori</th>
+<th>Keterangan</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ <strong>Hardhat</strong></td>
+<td>Helm keselamatan terdeteksi</td>
+<td>-</td>
+</tr>
+<tr>
+<td>✅ <strong>Mask</strong></td>
+<td>Masker terdeteksi</td>
+<td>-</td>
+</tr>
+<tr>
+<td>✅ <strong>Safety Vest</strong></td>
+<td>Rompi keselamatan terdeteksi</td>
+<td>-</td>
+</tr>
+<tr>
+<td>❌ <strong>NO-Hardhat</strong></td>
+<td>Tidak menggunakan helm</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>❌ <strong>NO-Mask</strong></td>
+<td>Tidak menggunakan masker</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>❌ <strong>NO-Safety Vest</strong></td>
+<td>Tidak menggunakan rompi</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>👤 <strong>Person</strong></td>
+<td>Deteksi individu untuk tracking</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="violation-severity-levels">Violation Severity Levels</h3>
+<ul>
+<li><strong>🟢 LOW</strong>: Pelanggaran minor, tidak urgent</li>
+<li><strong>🟡 MEDIUM</strong>: Pelanggaran sedang, perlu perhatian</li>
+<li><strong>🟠 HIGH</strong>: Pelanggaran serius, perlu tindakan
+segera</li>
+<li><strong>🔴 CRITICAL</strong>: Pelanggaran berbahaya, tindakan
+mendesak</li>
+</ul>
+<hr />
+<h2 id="quick-start">🚀 Quick Start</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python 3.8 atau lebih tinggi</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pip package manager</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> <span class="at">--version</span></span></code></pre></div>
+<h3 id="installation">Installation</h3>
+<ol type="1">
+<li><strong>Clone Repository</strong></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/raflimuhammadd/object-detection.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> object-detection</span></code></pre></div>
+<ol start="2" type="1">
+<li><strong>Setup Environment</strong></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> python-script</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt  <span class="co"># Jika ada</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># atau install manual:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install streamlit ultralytics opencv-python pillow python-dotenv requests</span></code></pre></div>
+<ol start="3" type="1">
+<li><strong>Configure Environment</strong></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy .env example ke .env</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ../.env.example .env</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit .env dengan konfigurasi Anda</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .env  <span class="co"># atau text editor lainnya</span></span></code></pre></div>
+<ol start="4" type="1">
+<li><strong>Setup Telegram Bot</strong> (Opsional)</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ikuti panduan di development/TELEGRAM_SETUP.md</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># atau set ENABLE_TELEGRAM=false di .env</span></span></code></pre></div>
+<ol start="5" type="1">
+<li><strong>Run Application</strong></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run app-new.py</span></code></pre></div>
+<p>Aplikasi akan berjalan di <code>http://localhost:8501</code></p>
+<hr />
+<h2 id="struktur-project">📁 Struktur Project</h2>
+<pre><code>object-detection/
+├── .env.example              # Template konfigurasi environment
+├── README.md                 # Dokumentasi utama (file ini)
+├── INSTALLATION.md           # Panduan instalasi lengkap
+├── CONFIGURATION.md          # Referensi konfigurasi
+├── USER_GUIDE.md            # Panduan pengguna
+│
+├── python-script/           # Main application directory
+│   ├── app-new.py          # Entry point - Streamlit app
+│   ├── config.py           # Configuration loader
+│   ├── database.py         # Database manager
+│   ├── telegram_notifier.py # Telegram notification system
+│   │
+│   ├── pages/              # Streamlit pages
+│   │   └── dashboard.py    # Dashboard statistik
+│   │
+│   ├── assets/             # Static assets
+│   │   └── sidebar_styles.css # UI styling
+│   │
+│   ├── development/        # Development docs &amp; resources
+│   │   ├── TELEGRAM_SETUP.md
+│   │   ├── README_DATABASE_NOTIFICATION.md
+│   │   └── css_requirement.md
+│   │
+│   ├── db/                 # Database directory
+│   │   └── apd_detection.db
+│   │
+│   └── .env                # Environment configuration (gitignored)
+│
+├── model-pt/               # YOLOv11 model files
+│   ├── best-detect.pt      # Custom trained model
+│   ├── v11.pt             # Model version 11
+│   └── yolov11s.pt         # YOLOv11 small base model
+│
+├── dataset/                # Training dataset (if any)
+├── detection-test(img&amp;vid)/ # Test images and videos
+└── APD_Pelabuhan/          # Additional resources</code></pre>
+<hr />
+<h2 id="screenshot">📸 Screenshot</h2>
+<blockquote>
+<p><strong>Note</strong>: Tambahkan screenshot berikut untuk dokumentasi
+lebih lengkap: - Dashboard view (light &amp; dark mode) - Detection
+results on image - Detection results on video - Telegram notification
+example - Violation statistics</p>
+</blockquote>
+<hr />
+<h2 id="dokumentasi">📚 Dokumentasi</h2>
+<h3 id="dokumentasi-lengkap">Dokumentasi Lengkap</h3>
+<ul>
+<li><strong><a href="INSTALLATION.md">INSTALLATION.md</a></strong> -
+Panduan instalasi detail dengan troubleshooting</li>
+<li><strong><a href="CONFIGURATION.md">CONFIGURATION.md</a></strong> -
+Penjelasan lengkap semua konfigurasi</li>
+<li><strong><a href="USER_GUIDE.md">USER_GUIDE.md</a></strong> - Panduan
+penggunaan untuk end-user</li>
+<li><strong><a
+href="API_DOCUMENTATION.md">API_DOCUMENTATION.md</a></strong> -
+Dokumentasi teknis untuk developer</li>
+<li><strong><a href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a></strong>
+- Common issues dan solusinya</li>
+</ul>
+<h3 id="development-docs">Development Docs</h3>
+<ul>
+<li><strong><a
+href="python-script/development/TELEGRAM_SETUP.md">TELEGRAM_SETUP.md</a></strong>
+- Setup Telegram bot</li>
+<li><strong><a
+href="python-script/development/README_DATABASE_NOTIFICATION.md">DATABASE_NOTIFICATION.md</a></strong>
+- Database schema</li>
+</ul>
+<hr />
+<h2 id="configuration-highlights">🔧 Configuration Highlights</h2>
+<p>Konfigurasi utama di <code>.env</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detection Settings</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.5      <span class="co"># Threshold deteksi (0.3-0.7)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>10                        <span class="co"># Frame per second</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Location</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="va">LOCATION</span><span class="op">=</span>Terminal <span class="ex">Pelabuhan</span> A</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">CAMERA_ID</span><span class="op">=</span>CAM-001</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Telegram Notification</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="va">ENABLE_TELEGRAM</span><span class="op">=</span>true</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="va">TELEGRAM_BOT_TOKEN</span><span class="op">=</span>your_token_here</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="va">TELEGRAM_CHAT_ID</span><span class="op">=</span>your_chat_id_here</span></code></pre></div>
+<p>Lihat <a href="CONFIGURATION.md">CONFIGURATION.md</a> untuk detail
+lengkap.</p>
+<hr />
+<h2 id="use-cases">🎯 Use Cases</h2>
+<ol type="1">
+<li><strong>Monitoring Pelabuhan</strong>: Real-time monitoring pekerja
+pelabuhan</li>
+<li><strong>Konstruksi</strong>: Monitoring site konstruksi</li>
+<li><strong>Manufaktur</strong>: Compliance monitoring di pabrik</li>
+<li><strong>Mining</strong>: Safety monitoring area tambang</li>
+<li><strong>Oil &amp; Gas</strong>: Monitoring area berbahaya</li>
+</ol>
+<hr />
+<h2 id="contributing">🤝 Contributing</h2>
+<p>Contributions are welcome! Silakan:</p>
+<ol type="1">
+<li>Fork repository ini</li>
+<li>Buat branch fitur baru
+(<code>git checkout -b feature/AmazingFeature</code>)</li>
+<li>Commit perubahan
+(<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+<li>Push ke branch
+(<code>git push origin feature/AmazingFeature</code>)</li>
+<li>Buat Pull Request</li>
+</ol>
+<hr />
+<h2 id="license">📝 License</h2>
+<p>Distributed under the MIT License. See <code>LICENSE</code> for more
+information.</p>
+<hr />
+<h2 id="author">👨‍💻 Author</h2>
+<p><strong>Rafli Muhammad</strong> - GitHub: <a
+href="https://github.com/raflimuhammadd"><span class="citation"
+data-cites="raflimuhammadd">@raflimuhammadd</span></a> - Project: <a
+href="https://github.com/raflimuhammadd/object-detection">object-detection</a></p>
+<hr />
+<h2 id="acknowledgments">🙏 Acknowledgments</h2>
+<ul>
+<li><a href="https://github.com/ultralytics/ultralytics">Ultralytics
+YOLOv11</a> - Object detection model</li>
+<li><a href="https://github.com/ifzhang/ByteTrack">ByteTrack</a> -
+Multi-object tracking</li>
+<li><a href="https://streamlit.io/">Streamlit</a> - Web framework</li>
+<li>Community contributors</li>
+</ul>
+<hr />
+<h2 id="support">📞 Support</h2>
+<p>Jika Anda memiliki pertanyaan atau menemukan bug:</p>
+<ol type="1">
+<li>Baca <a href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a> terlebih
+dahulu</li>
+<li>Cek <a
+href="https://github.com/raflimuhammadd/object-detection/issues">GitHub
+Issues</a></li>
+<li>Buat issue baru jika masalah belum ada</li>
+</ol>
+<hr />
+<div data-align="center">
+<p><strong>⭐ Star project ini jika Anda merasa bermanfaat!</strong></p>
+<p>Made with ❤️ for workplace safety</p>
+</div>
+</body>
+</html>

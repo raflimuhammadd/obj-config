@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>APD Detection System - USER_GUIDE</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {  background-color: #f8f8f8; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ef2929; } /* Alert */
+    code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #204a87; } /* Attribute */
+    code span.bn { color: #0000cf; } /* BaseN */
+    code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4e9a06; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #8f5902; font-style: italic; } /* Comment */
+    code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+    code span.dt { color: #204a87; } /* DataType */
+    code span.dv { color: #0000cf; } /* DecVal */
+    code span.er { color: #a40000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #0000cf; } /* Float */
+    code span.fu { color: #204a87; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+    code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+    code span.ot { color: #8f5902; } /* Other */
+    code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+    code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+    code span.ss { color: #4e9a06; } /* SpecialString */
+    code span.st { color: #4e9a06; } /* String */
+    code span.va { color: #000000; } /* Variable */
+    code span.vs { color: #4e9a06; } /* VerbatimString */
+    code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">APD Detection System - USER_GUIDE</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#user-guide" id="toc-user-guide">📖 User Guide</a>
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">📋 Table of
+Contents</a></li>
+<li><a href="#getting-started" id="toc-getting-started">🚀 Getting
+Started</a>
+<ul>
+<li><a href="#menjalankan-aplikasi"
+id="toc-menjalankan-aplikasi">Menjalankan Aplikasi</a></li>
+<li><a href="#interface-overview" id="toc-interface-overview">Interface
+Overview</a></li>
+</ul></li>
+<li><a href="#dashboard-overview" id="toc-dashboard-overview">📊
+Dashboard Overview</a>
+<ul>
+<li><a href="#main-components" id="toc-main-components">Main
+Components</a></li>
+<li><a href="#navigation" id="toc-navigation">Navigation</a></li>
+</ul></li>
+<li><a href="#detection-modes" id="toc-detection-modes">🎯 Detection
+Modes</a>
+<ul>
+<li><a href="#mode-1-image-detection"
+id="toc-mode-1-image-detection">Mode 1: Image Detection</a></li>
+<li><a href="#mode-2-video-detection"
+id="toc-mode-2-video-detection">Mode 2: Video Detection</a></li>
+<li><a href="#mode-3-webcam-detection"
+id="toc-mode-3-webcam-detection">Mode 3: Webcam Detection</a></li>
+</ul></li>
+<li><a href="#understanding-results" id="toc-understanding-results">📊
+Understanding Results</a>
+<ul>
+<li><a href="#detection-output" id="toc-detection-output">Detection
+Output</a></li>
+</ul></li>
+<li><a href="#telegram-notifications" id="toc-telegram-notifications">📱
+Telegram Notifications</a>
+<ul>
+<li><a href="#notification-format"
+id="toc-notification-format">Notification Format</a></li>
+<li><a href="#button-actions" id="toc-button-actions">Button
+Actions</a></li>
+<li><a href="#notification-settings"
+id="toc-notification-settings">Notification Settings</a></li>
+</ul></li>
+<li><a href="#managing-violations" id="toc-managing-violations">🔍
+Managing Violations</a>
+<ul>
+<li><a href="#violation-severity-levels"
+id="toc-violation-severity-levels">Violation Severity Levels</a></li>
+<li><a href="#violation-rules" id="toc-violation-rules">Violation
+Rules</a></li>
+<li><a href="#violation-tracking" id="toc-violation-tracking">Violation
+Tracking</a></li>
+</ul></li>
+<li><a href="#reports-statistics" id="toc-reports-statistics">📈 Reports
+&amp; Statistics</a>
+<ul>
+<li><a href="#dashboard-statistics-page"
+id="toc-dashboard-statistics-page">Dashboard Statistics Page</a></li>
+<li><a href="#export-data" id="toc-export-data">Export Data</a></li>
+</ul></li>
+<li><a href="#tips-best-practices" id="toc-tips-best-practices">💡 Tips
+&amp; Best Practices</a>
+<ul>
+<li><a href="#for-best-detection-accuracy"
+id="toc-for-best-detection-accuracy">For Best Detection
+Accuracy</a></li>
+<li><a href="#for-optimal-performance"
+id="toc-for-optimal-performance">For Optimal Performance</a></li>
+<li><a href="#for-notification-management"
+id="toc-for-notification-management">For Notification
+Management</a></li>
+</ul></li>
+<li><a href="#faq" id="toc-faq">❓ FAQ</a>
+<ul>
+<li><a href="#q-kenapa-deteksi-tidak-akurat"
+id="toc-q-kenapa-deteksi-tidak-akurat">Q: Kenapa deteksi tidak
+akurat?</a></li>
+<li><a href="#q-kenapa-telegram-tidak-menerima-notifikasi"
+id="toc-q-kenapa-telegram-tidak-menerima-notifikasi">Q: Kenapa Telegram
+tidak menerima notifikasi?</a></li>
+<li><a href="#q-kenapa-deteksi-lambat"
+id="toc-q-kenapa-deteksi-lambat">Q: Kenapa deteksi lambat?</a></li>
+<li><a href="#q-bagaimana-cara-export-data"
+id="toc-q-bagaimana-cara-export-data">Q: Bagaimana cara export
+data?</a></li>
+<li><a href="#q-berapa-lama-data-disimpan"
+id="toc-q-berapa-lama-data-disimpan">Q: Berapa lama data
+disimpan?</a></li>
+</ul></li>
+<li><a href="#need-help" id="toc-need-help">🆘 Need Help?</a>
+<ul>
+<li><a href="#resources" id="toc-resources">Resources</a></li>
+</ul></li>
+<li><a href="#training-onboarding" id="toc-training-onboarding">🎓
+Training &amp; Onboarding</a>
+<ul>
+<li><a href="#for-new-users" id="toc-for-new-users">For New
+Users</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="user-guide">📖 User Guide</h1>
+<p>Panduan lengkap penggunaan APD Detection System untuk end-user.</p>
+<hr />
+<h2 id="table-of-contents">📋 Table of Contents</h2>
+<ul>
+<li><a href="#-getting-started">Getting Started</a></li>
+<li><a href="#-dashboard-overview">Dashboard Overview</a></li>
+<li><a href="#-detection-modes">Detection Modes</a></li>
+<li><a href="#-understanding-results">Understanding Results</a></li>
+<li><a href="#-telegram-notifications">Telegram Notifications</a></li>
+<li><a href="#-managing-violations">Managing Violations</a></li>
+<li><a href="#-reports--statistics">Reports &amp; Statistics</a></li>
+<li><a href="#-tips--best-practices">Tips &amp; Best Practices</a></li>
+</ul>
+<hr />
+<h2 id="getting-started">🚀 Getting Started</h2>
+<h3 id="menjalankan-aplikasi">Menjalankan Aplikasi</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate ke directory python-script</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> python-script</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run aplikasi</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run app-new.py</span></code></pre></div>
+<p>Aplikasi akan terbuka di browser:
+<code>http://localhost:8501</code></p>
+<h3 id="interface-overview">Interface Overview</h3>
+<p>![Dashboard Layout]</p>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│  SIDEBAR              │  MAIN CONTENT              │
+│                       │                             │
+│  🎯 Mode Selection    │  📊 Detection Results      │
+│  📁 File Upload       │  🖼️  Preview Image/Video   │
+│  ⚙️  Settings         │  📈 Statistics             │
+│  🌓 Theme Toggle      │  📋 Violation List         │
+│                       │                             │
+└─────────────────────────────────────────────────────┘</code></pre>
+<hr />
+<h2 id="dashboard-overview">📊 Dashboard Overview</h2>
+<h3 id="main-components">Main Components</h3>
+<h4 id="sidebar-kiri">1. <strong>Sidebar</strong> (Kiri)</h4>
+<ul>
+<li>Mode selection (Image/Video/Webcam)</li>
+<li>File uploader</li>
+<li>Detection settings</li>
+<li>Theme toggle (Light/Dark mode)</li>
+</ul>
+<h4 id="main-content-tengah">2. <strong>Main Content</strong>
+(Tengah)</h4>
+<ul>
+<li>Detection results preview</li>
+<li>Statistics &amp; metrics</li>
+<li>Violation alerts</li>
+<li>Session information</li>
+</ul>
+<h4 id="theme-toggle-bottom-sidebar">3. <strong>Theme Toggle</strong>
+(Bottom Sidebar)</h4>
+<ul>
+<li>Light mode (siang hari)</li>
+<li>Dark mode (malam hari)</li>
+<li>Click icon untuk toggle</li>
+</ul>
+<h3 id="navigation">Navigation</h3>
+<ul>
+<li><strong>Pages</strong>:
+<ul>
+<li>🏠 <strong>Home</strong> (Detection) - Main detection interface</li>
+<li>📊 <strong>Dashboard</strong> - Statistics &amp; analytics</li>
+</ul></li>
+</ul>
+<p>Access via sidebar menu atau URL: - Home:
+<code>http://localhost:8501</code> - Dashboard:
+<code>http://localhost:8501/dashboard</code></p>
+<hr />
+<h2 id="detection-modes">🎯 Detection Modes</h2>
+<h3 id="mode-1-image-detection">Mode 1: Image Detection</h3>
+<p><strong>Use Case</strong>: Analyze static images untuk compliance
+check.</p>
+<p><strong>Steps</strong>: 1. Pilih <strong>“Image”</strong> dari
+sidebar 2. Click <strong>“Upload image”</strong> 3. Select image file
+(jpg, jpeg, png) 4. Image preview akan muncul 5. Click <strong>“Detect
+APD”</strong> 6. Lihat hasil deteksi</p>
+<p><strong>Hasil</strong>: - Annotated image dengan bounding boxes -
+Detection counts per category - Violation alerts (jika ada) - Compliance
+percentage</p>
+<p><strong>Tips</strong>: - Gunakan image dengan resolusi tinggi untuk
+akurasi lebih baik - Pastikan lighting cukup - Hindari image blur atau
+motion blur</p>
+<h3 id="mode-2-video-detection">Mode 2: Video Detection</h3>
+<p><strong>Use Case</strong>: Analyze recorded video footage.</p>
+<p><strong>Steps</strong>: 1. Pilih <strong>“Video”</strong> dari
+sidebar 2. Click <strong>“Upload video”</strong> 3. Select video file
+(mp4, avi, mov) 4. Video akan diproses frame by frame 5. Lihat progress
+bar 6. Hasil akan ditampilkan setelah selesai</p>
+<p><strong>Hasil</strong>: - Processed video dengan annotations -
+Frame-by-frame statistics - Violation timeline - Summary report</p>
+<p><strong>Notes</strong>: - Processing time tergantung panjang video -
+Hanya frames dengan perubahan signifikan yang disave (optimasi storage)
+- Sample rate: default 30 frames (1 detection per detik)</p>
+<p><strong>Tips</strong>: - Video pendek (&lt; 5 menit) lebih cepat -
+Hindari video dengan low frame rate - Kualitas video mempengaruhi
+akurasi</p>
+<h3 id="mode-3-webcam-detection">Mode 3: Webcam Detection</h3>
+<p><strong>Use Case</strong>: Real-time monitoring via webcam.</p>
+<p><strong>Steps</strong>: 1. Pilih <strong>“Webcam”</strong> dari
+sidebar 2. Allow browser access ke webcam 3. Click <strong>“Start
+Detection”</strong> 4. Real-time detection akan berjalan 5. Click
+<strong>“Stop Detection”</strong> untuk berhenti</p>
+<p><strong>Hasil</strong>: - Real-time video feed dengan annotations -
+Live statistics - Instant violation alerts - Continuous monitoring</p>
+<p><strong>Requirements</strong>: - Webcam connected dan enabled -
+Browser permission granted - Stable internet (untuk notifikasi)</p>
+<p><strong>Tips</strong>: - Posisikan kamera dengan good angle -
+Pastikan lighting cukup - Monitor CPU usage (turunkan FPS jika lag)</p>
+<hr />
+<h2 id="understanding-results">📊 Understanding Results</h2>
+<h3 id="detection-output">Detection Output</h3>
+<p>Setelah detection, Anda akan melihat:</p>
+<h4 id="annotated-imagevideo">1. <strong>Annotated
+Image/Video</strong></h4>
+<pre><code>┌─────────────────────────────────┐
+│  [Person]                       │
+│  ┌─────────┐                    │
+│  │ ✅ Hardhat│                   │
+│  │ ✅ Vest   │                   │
+│  │ ❌ NO-Mask│ ← Violation!      │
+│  └─────────┘                    │
+└─────────────────────────────────┘</code></pre>
+<p><strong>Color Codes</strong>: - 🟢 <strong>Green</strong>: APD
+detected (safe) - 🔴 <strong>Red</strong>: APD missing (violation) - 🟦
+<strong>Blue</strong>: Person detected</p>
+<h4 id="detection-statistics">2. <strong>Detection
+Statistics</strong></h4>
+<pre><code>📊 Detection Summary:
+├─ 👤 Total Persons: 5
+├─ ✅ Hardhat: 4
+├─ ✅ Safety Vest: 3
+├─ ✅ Mask: 2
+├─ ❌ NO-Hardhat: 1
+├─ ❌ NO-Safety Vest: 2
+└─ ❌ NO-Mask: 3</code></pre>
+<h4 id="compliance-rate">3. <strong>Compliance Rate</strong></h4>
+<pre><code>🎯 Compliance: 60%
+━━━━━━━━━━━━━━━━━━━━━
+✅ 60%            ❌ 40%
+
+Status: ⚠️ MEDIUM RISK</code></pre>
+<p><strong>Interpretation</strong>: - 🟢 <strong>90-100%</strong>:
+Excellent compliance - 🟡 <strong>70-89%</strong>: Good compliance - 🟠
+<strong>50-69%</strong>: Medium risk - 🔴 <strong>&lt; 50%</strong>:
+High risk</p>
+<h4 id="violation-alerts">4. <strong>Violation Alerts</strong></h4>
+<pre><code>⚠️ VIOLATIONS DETECTED
+
+🔴 HIGH SEVERITY
+Person #3: NO-Hardhat
+└─ Time: 14:23:45
+└─ Camera: CAM-001
+└─ Location: Terminal A
+
+🟡 MEDIUM SEVERITY
+Person #5: NO-Mask
+└─ Time: 14:24:12
+└─ Camera: CAM-001
+└─ Location: Terminal A</code></pre>
+<hr />
+<h2 id="telegram-notifications">📱 Telegram Notifications</h2>
+<h3 id="notification-format">Notification Format</h3>
+<p>Ketika violation terdeteksi, Telegram akan menerima:</p>
+<pre><code>🚨 APD VIOLATION DETECTED
+
+👤 Person ID: #3
+⚠️ Violation: NO-HARDHAT
+🔴 Severity: HIGH
+
+📍 Location: Terminal Pelabuhan A
+📹 Camera: CAM-001
+🕐 Time: 06 Feb 2026 14:23:45
+
+━━━━━━━━━━━━━━━━━━━━
+📊 Details:
+├─ Confidence: 87%
+├─ Duration: 15 seconds
+└─ Violation #: 1
+
+[View Details] [Resolved] [False Positive]</code></pre>
+<h3 id="button-actions">Button Actions</h3>
+<h4 id="view-details">1. <strong>View Details</strong></h4>
+<ul>
+<li>Click untuk melihat detail lengkap</li>
+<li>Akan show additional information</li>
+<li>Link ke dashboard (jika accessible)</li>
+</ul>
+<h4 id="resolved">2. <strong>Resolved</strong></h4>
+<ul>
+<li>Click jika violation sudah ditangani</li>
+<li>Status akan update ke “RESOLVED”</li>
+<li>Prevent duplicate alerts</li>
+</ul>
+<h4 id="false-positive">3. <strong>False Positive</strong></h4>
+<ul>
+<li>Click jika ini false detection</li>
+<li>Mark sebagai false positive</li>
+<li>Help improve accuracy</li>
+</ul>
+<h3 id="notification-settings">Notification Settings</h3>
+<p>Control di <code>.env</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable/disable</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">ENABLE_TELEGRAM</span><span class="op">=</span>true</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cooldown (prevent spam)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">NOTIFICATION_COOLDOWN_SECONDS</span><span class="op">=</span>300  <span class="co"># 5 minutes</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum severity</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="va">MIN_SEVERITY_FOR_NOTIFICATION</span><span class="op">=</span>MEDIUM</span></code></pre></div>
+<p><strong>Behavior</strong>: - Same person + same violation = cooldown
+5 menit - Different person = immediate notification - Only send jika
+severity ≥ MEDIUM (default)</p>
+<hr />
+<h2 id="managing-violations">🔍 Managing Violations</h2>
+<h3 id="violation-severity-levels">Violation Severity Levels</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Icon</th>
+<th>When to Use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LOW</strong></td>
+<td>🟢</td>
+<td>Minor issues</td>
+<td>Single mask missing in low-risk area</td>
+</tr>
+<tr>
+<td><strong>MEDIUM</strong></td>
+<td>🟡</td>
+<td>Moderate risk</td>
+<td>Mask missing in moderate area</td>
+</tr>
+<tr>
+<td><strong>HIGH</strong></td>
+<td>🟠</td>
+<td>Serious risk</td>
+<td>Hardhat or vest missing</td>
+</tr>
+<tr>
+<td><strong>CRITICAL</strong></td>
+<td>🔴</td>
+<td>Immediate danger</td>
+<td>Multiple APD missing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="violation-rules">Violation Rules</h3>
+<p><strong>System automatically determines severity</strong>:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Single violation</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>NO<span class="op">-</span>Mask only → MEDIUM</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple violations</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>NO<span class="op">-</span>Hardhat <span class="op">+</span> NO<span class="op">-</span>Mask → HIGH</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Critical violations</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>NO<span class="op">-</span>Hardhat <span class="op">+</span> NO<span class="op">-</span>Vest <span class="op">+</span> NO<span class="op">-</span>Mask → CRITICAL</span></code></pre></div>
+<h3 id="violation-tracking">Violation Tracking</h3>
+<p><strong>Per-Person Tracking</strong> (ByteTrack): - Each person gets
+unique ID - Track violation history per individual - Cooldown per person
+(prevent duplicate)</p>
+<p><strong>Example</strong>:</p>
+<pre><code>Person #1: NO-Hardhat (Last notified: 5 min ago)
+Person #2: NO-Mask (Last notified: 2 min ago)
+Person #3: NO-Vest (Last notified: Just now)</code></pre>
+<hr />
+<h2 id="reports-statistics">📈 Reports &amp; Statistics</h2>
+<h3 id="dashboard-statistics-page">Dashboard Statistics Page</h3>
+<p>Navigate ke <code>/dashboard</code> untuk melihat:</p>
+<h4 id="overview-metrics">1. <strong>Overview Metrics</strong></h4>
+<pre><code>┌─────────────────────────────────────────────┐
+│  Total Detections       Sessions Active     │
+│      1,234                    5             │
+│                                             │
+│  Compliance Rate        Violations Today    │
+│      78%                     12             │
+└─────────────────────────────────────────────┘</code></pre>
+<h4 id="violation-trends">2. <strong>Violation Trends</strong></h4>
+<ul>
+<li>Line chart: Violations over time</li>
+<li>Bar chart: Violations by type</li>
+<li>Pie chart: Severity distribution</li>
+</ul>
+<h4 id="session-history">3. <strong>Session History</strong></h4>
+<pre><code>Session ID | Mode   | Location      | Detections | Violations
+--------------------------------------------------------------
+001        | Webcam | Terminal A    | 156        | 12
+002        | Video  | Workshop B    | 89         | 5
+003        | Image  | Main Gate     | 23         | 1</code></pre>
+<h4 id="telegram-connection-status">4. <strong>Telegram Connection
+Status</strong></h4>
+<pre><code>🟢 Telegram: Connected
+Last notification: 2 minutes ago
+Total sent today: 15</code></pre>
+<h3 id="export-data">Export Data</h3>
+<p><strong>Export Options</strong> (Coming Soon): - CSV: For Excel
+analysis - PDF: For reports - JSON: For API integration</p>
+<hr />
+<h2 id="tips-best-practices">💡 Tips &amp; Best Practices</h2>
+<h3 id="for-best-detection-accuracy">For Best Detection Accuracy</h3>
+<h4 id="camera-positioning">1. <strong>Camera Positioning</strong></h4>
+<ul>
+<li>✅ Mount at chest-to-head height</li>
+<li>✅ Cover entry/exit points</li>
+<li>✅ Avoid backlighting</li>
+<li>❌ Jangan terlalu tinggi (bird’s eye view)</li>
+<li>❌ Jangan terlalu rendah</li>
+</ul>
+<h4 id="lighting-conditions">2. <strong>Lighting
+Conditions</strong></h4>
+<ul>
+<li>✅ Even lighting (natural or artificial)</li>
+<li>✅ Avoid harsh shadows</li>
+<li>✅ Use supplemental lighting jika perlu</li>
+<li>❌ Direct sunlight ke camera</li>
+<li>❌ Low light conditions</li>
+</ul>
+<h4 id="image-quality">3. <strong>Image Quality</strong></h4>
+<ul>
+<li>✅ Minimum 720p resolution</li>
+<li>✅ Clear, sharp images</li>
+<li>✅ Minimal motion blur</li>
+<li>❌ Low-resolution images</li>
+<li>❌ Blurry or pixelated</li>
+</ul>
+<h3 id="for-optimal-performance">For Optimal Performance</h3>
+<h4 id="cpu-only-systems">1. <strong>CPU-Only Systems</strong></h4>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .env settings</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.6</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>5</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_FRAME_SAMPLE_RATE</span><span class="op">=</span>30</span></code></pre></div>
+<h4 id="gpu-systems">2. <strong>GPU Systems</strong></h4>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .env settings</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="va">CONFIDENCE_THRESHOLD</span><span class="op">=</span>0.5</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="va">FPS</span><span class="op">=</span>30</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="va">VIDEO_FRAME_SAMPLE_RATE</span><span class="op">=</span>60</span></code></pre></div>
+<h4 id="memory-management">3. <strong>Memory Management</strong></h4>
+<ul>
+<li>Close unused browser tabs</li>
+<li>Process video in chunks jika terlalu panjang</li>
+<li>Clear database lama secara berkala</li>
+</ul>
+<h3 id="for-notification-management">For Notification Management</h3>
+<h4 id="prevent-spam">1. <strong>Prevent Spam</strong></h4>
+<ul>
+<li>Set cooldown: 3-5 minutes</li>
+<li>Minimum severity: MEDIUM atau HIGH</li>
+<li>Use per-person tracking</li>
+</ul>
+<h4 id="response-protocol">2. <strong>Response Protocol</strong></h4>
+<ul>
+<li>Check notification dalam 5 menit</li>
+<li>Use button actions (Resolved/False Positive)</li>
+<li>Review trends di dashboard</li>
+</ul>
+<h4 id="false-positive-handling">3. <strong>False Positive
+Handling</strong></h4>
+<ul>
+<li>Mark as false positive</li>
+<li>Review detection threshold</li>
+<li>Consider retraining model (advanced)</li>
+</ul>
+<hr />
+<h2 id="faq">❓ FAQ</h2>
+<h3 id="q-kenapa-deteksi-tidak-akurat">Q: Kenapa deteksi tidak
+akurat?</h3>
+<p><strong>A</strong>: Beberapa kemungkinan: 1. Lighting kurang baik →
+Improve lighting 2. Resolution terlalu rendah → Use higher quality 3.
+Confidence threshold terlalu rendah → Turunkan ke 0.6-0.7 4. Model perlu
+retraining → Contact admin</p>
+<h3 id="q-kenapa-telegram-tidak-menerima-notifikasi">Q: Kenapa Telegram
+tidak menerima notifikasi?</h3>
+<p><strong>A</strong>: Check: 1. <code>ENABLE_TELEGRAM=true</code> di
+.env 2. Token dan Chat ID benar 3. Bot tidak di-block 4. Internet
+connection stabil 5. Run test:
+<code>python -c "...test_connection()..."</code></p>
+<h3 id="q-kenapa-deteksi-lambat">Q: Kenapa deteksi lambat?</h3>
+<p><strong>A</strong>: Optimization: 1. Turunkan FPS (10 → 5) 2.
+Increase sample rate (30 → 60) 3. Use GPU jika tersedia 4. Lower video
+resolution</p>
+<h3 id="q-bagaimana-cara-export-data">Q: Bagaimana cara export
+data?</h3>
+<p><strong>A</strong>: Currently: - Screenshot dashboard untuk visual -
+Manual copy dari database (SQLite) - Export feature coming soon</p>
+<h3 id="q-berapa-lama-data-disimpan">Q: Berapa lama data disimpan?</h3>
+<p><strong>A</strong>: Default: - Database tidak auto-delete - Manual
+cleanup recommended: - Weekly: Archive old sessions - Monthly: Backup
+database - Quarterly: Clear old logs</p>
+<hr />
+<h2 id="need-help">🆘 Need Help?</h2>
+<h3 id="resources">Resources</h3>
+<ol type="1">
+<li>📖 <strong>Documentation</strong>:
+<ul>
+<li><a href="README.md">README.md</a> - Overview</li>
+<li><a href="INSTALLATION.md">INSTALLATION.md</a> - Setup</li>
+<li><a href="CONFIGURATION.md">CONFIGURATION.md</a> - Config
+reference</li>
+<li><a href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a> - Common
+issues</li>
+</ul></li>
+<li>🐛 <strong>Issues</strong>:
+<ul>
+<li>Check <a
+href="https://github.com/raflimuhammadd/object-detection/issues">GitHub
+Issues</a></li>
+<li>Create new issue jika belum ada</li>
+</ul></li>
+<li>📧 <strong>Contact</strong>:
+<ul>
+<li>GitHub: <a href="https://github.com/raflimuhammadd"><span
+class="citation"
+data-cites="raflimuhammadd">@raflimuhammadd</span></a></li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="training-onboarding">🎓 Training &amp; Onboarding</h2>
+<h3 id="for-new-users">For New Users</h3>
+<p><strong>Day 1</strong>: Setup &amp; Basic Detection - Install
+aplikasi - Run image detection - Understand results</p>
+<p><strong>Day 2</strong>: Advanced Features - Video detection - Webcam
+monitoring - Telegram notifications</p>
+<p><strong>Day 3</strong>: Dashboard &amp; Reports - Navigate dashboard
+- Understand statistics - Export data</p>
+<p><strong>Week 2+</strong>: Production Use - Monitor compliance -
+Respond to violations - Optimize settings</p>
+<hr />
+<p><strong>Happy Monitoring! 🦺✨</strong></p>
+</body>
+</html>
