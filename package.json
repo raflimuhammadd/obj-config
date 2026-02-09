@@ -1,0 +1,23 @@
+{
+  "name": "obj-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "npx -y prettier@latest --write \"**/*.{html,css,md,json}\"",
+    "format:check": "npx -y prettier@latest --check \"**/*.{html,css,md,json}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raflimuhammadd/obj-config.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raflimuhammadd/obj-config/issues"
+  },
+  "homepage": "https://github.com/raflimuhammadd/obj-config#readme"
+}
